@@ -3,6 +3,8 @@ package com.d288.performanceassessment.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -34,9 +36,11 @@ public class Vacation {
     private String image_URL;
 
     @Column(name = "create_date")
+    @CreationTimestamp
     private Instant create_date;
 
     @Column(name = "last_update")
+    @UpdateTimestamp
     private Instant last_update;
     
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "vacation")
