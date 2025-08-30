@@ -47,5 +47,4 @@ public class Excursion {
 
     @ManyToMany(mappedBy = "excursions", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     private Set<CartItem> cartitems;
-
 }

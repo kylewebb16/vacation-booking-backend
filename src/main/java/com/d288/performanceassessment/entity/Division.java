@@ -32,7 +32,6 @@ public class Division {
     @UpdateTimestamp
     private Date last_update;
 
-    private long country_id;
 
     @ManyToOne
     @JoinColumn(name = "country_id", nullable = false)
