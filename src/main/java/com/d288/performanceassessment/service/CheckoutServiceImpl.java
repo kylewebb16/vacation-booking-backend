@@ -17,12 +17,10 @@ import java.util.UUID;
 public class CheckoutServiceImpl implements CheckoutService{
 
     private CartRepository cartRepository;
-    private CustomerRepository customerRepository;
 
     @Autowired
-    public CheckoutServiceImpl(CartRepository cartRepository, CustomerRepository customerRepository) {
+    public CheckoutServiceImpl(CartRepository cartRepository) {
         this.cartRepository = cartRepository;
-        this.customerRepository = customerRepository;
     }
 
     @Override
@@ -41,11 +39,14 @@ public class CheckoutServiceImpl implements CheckoutService{
 
         cart.setStatus(StatusType.ordered);
 
-        cartRepository.save(cart);
-        customerRepository.save(customer);
 
-
-        return new PurchaseResponse(orderTrackingNumber);
+        if (cart.getCartItem() != null && !cart.getCartItem().isEmpty()) {
+            cartRepository.save(cart);
+            return new PurchaseResponse(orderTrackingNumber);
+        }
+        else {
+            return new PurchaseResponse("Cart can not be empty, please add items to checkout");
+        }
     }
 
     private String generateOrderTrackingNumber() {
