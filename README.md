@@ -1,27 +1,50 @@
-<strong> **DO NOT DISTRIBUTE OR PUBLICLY POST SOLUTIONS TO THESE LABS. MAKE ALL FORKS OF THIS REPOSITORY WITH SOLUTION CODE PRIVATE. PLEASE REFER TO THE STUDENT CODE OF CONDUCT AND ETHICAL EXPECTATIONS FOR COLLEGE OF INFORMATION TECHNOLOGY STUDENTS FOR SPECIFICS. ** </strong>
-# WESTERN GOVERNORS UNIVERSITY 
-## D288 – BACK-END PROGRAMMING
-Welcome to Back-End Programming! This is an opportunity for students to develop object-oriented applications that can be integrated with relational databases, write code for object-oriented applications using Spring framework, and implements design patterns for object-oriented applications. 
-FOR SPECIFIC TASK INSTRUCTIONS AND REQUIREMENTS FOR THIS ASSESSMENT, PLEASE REFER TO THE COURSE PAGE.
-## BASIC INSTRUCTIONS
-For this project, you will be building your project using IntelliJ IDEA (Ultimate Edition) in a WGU-provided lab environment. You will be working with an existing MySQL database and Angular front-end, which are supplied for you in the lab environment. You will share this project to a private external GitLab repository and backup regularly. If you wish to work on it on your local machine, you will also need to download the Angular front-end application and create your own MySQL database. Use the links on your course page to install the integrated development environments (IDE), MySQL WorkBench, and IntelliJ IDEA, and pull the project from the lab environment.  
+# Spring Boot Vacation Booking API
 
+Professional Spring Boot backend developed to modernize a legacy vacation booking system and serve as a portfolio-ready demonstration of production\-oriented backend skills.
 
-## SUPPLEMENTAL RESOURCES  
-1.	How to clone a project to IntelliJ using Git?
+## Project Context (Scenario)
+- A travel agency rebuilt its front\-end with Angular, but the legacy back\-end (from the 1990s) produced undocumented bugs when the front\-end fetched or submitted data. The original developer retired and the codebase accumulated tech debt with no ongoing support. This project implements a minimally viable product (MVP) to port mission\-critical functionality to a modern Spring Boot back end, enabling reliable RESTful integration with the unmodified Angular client.
+- Note: The legacy back end is an unmaintained monolithic system originating in the early 1990s. It lacks documentation, automated tests, and stable API contracts, which caused undocumented runtime failures when the Angular front end integrated. This project focuses on diagnosing those failures, reverse‑engineering legacy behavior, and porting mission‑critical functionality to a maintainable Spring Boot service while keeping the supplied Angular client unchanged.
 
-> Ensure that you have Git installed on your system and that IntelliJ is installed using [Toolbox](https://www.jetbrains.com/toolbox-app/). Make sure that you are using version 2022.3.2. Once this has been confirmed, click the clone button and use the 'IntelliJ IDEA (HTTPS)' button. This will open IntelliJ with a prompt to clone the proejct. Save it in a safe location for the directory and press clone. IntelliJ will prompt you for your credentials. Enter in your WGU Credentials and the project will be cloned onto your local machine.  
+## What this shows
+- Replacing legacy systems with a modern, testable service layer
+- Designing RESTful APIs and DTOs that match front\-end expectations
+- Persistence with Spring Data JPA and MySQL, and safe seeding of sample data
+- Input validation and CORS configuration to integrate with a separate front end
+- Service/repository/controller layering and clean package organization
+- Use of Lombok, Maven, and industry tooling for maintainability and speed
 
-2. How to create a branch and start Development?
+## Key Features
+- POST checkout endpoint for placing orders and returning tracking numbers
+- Purchase and response DTOs, checkout service interface and implementation
+- JPA entities and repositories with CORS support for Angular integration
+- Validation aligned to the supplied Angular client inputs
+- Programmatic seeding of five sample customers (idempotent)
+- Clear commit history to demonstrate iterative development
 
-- GitLab method
-> Press the '+' button located near your branch name. In the dropdown list, press the 'New branch' button. This will allow you to create a name for your branch. Once the branch has been named, you can select 'Create Branch' to push the branch to your repository.
+## Tech Stack
+- Java, Spring Boot, Spring Data JPA, Spring Data REST
+- MySQL, Lombok, Maven
+- Angular (front end supplied in `D288 Front End/`), TypeScript, Node.js / npm
 
-- IntelliJ method
-> In IntelliJ, Go to the 'Git' button on the top toolbar. Select the new branch option and create a name for the branch. Make sure checkout branch is selected and press create. You can now add a commit message and push the new branch to the local repo.
+## Quick Start
+1. Configure the database in `src/main/resources/application.properties`.
+2. Build and run the backend:
+    - `mvn clean install`
+    - `mvn spring-boot:run`
+3. (Optional) Run the supplied Angular client in `D288 Front End/`:
+    - `npm install`
+    - `npm start` or `ng serve`
 
-## SUPPORT
-If you need additional support, please navigate to the course page and reach out to your course instructor.
-## FUTURE USE
-Take this opportunity to create or add to a simple resume portfolio to highlight and showcase your work for future use in career search, experience, and education!
+## Important Paths & Files
+- `src/main/java/.../controllers` — REST controllers (checkout endpoint)
+- `src/main/java/.../services` — business logic and DTOs
+- `src/main/java/.../dao` — JPA repositories
+- `src/main/java/.../entities` — data model and enums
+- `src/main/resources/application.properties` — DB and app configuration
+- `D288 Front End/` — supplied Angular front end (do not modify)
+
+## Endpoints
+- `POST /api/checkout/purchase` — place an order (checkout)
+
 
